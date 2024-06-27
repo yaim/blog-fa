@@ -11,7 +11,7 @@
       {% if item[1].size == i %}
         <li>
           <a href="#{{ item[0] | slugify }}">
-            <strong>{{ item[0] }}</strong> <span class="taxonomy__count">{{ i }}</span>
+            <strong>{{ item[0] | category_name }}</strong> <span class="taxonomy__count">{{ i }}</span>
           </a>
         </li>
       {% endif %}
@@ -24,7 +24,7 @@
   {% for taxonomy in include.taxonomies %}
     {% if taxonomy[1].size == i %}
       <section id="{{ taxonomy[0] | slugify }}" class="taxonomy__section">
-        <h2 class="archive__subtitle">{{ taxonomy[0] }}</h2>
+        <h2 class="archive__subtitle">{{ taxonomy[0] | category_name }}</h2>
         <div class="entries-{{ entries_layout }}">
           {% for post in taxonomy.last %}
             {% include archive-single.html type=entries_layout %}
